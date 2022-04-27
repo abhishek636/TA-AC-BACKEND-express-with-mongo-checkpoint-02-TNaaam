@@ -1,0 +1,47 @@
+#shadowing
+{
+	display: none;
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color:grey;
+	z-index:10;
+	opacity:0.5;
+	filter: alpha(opacity=50);
+}
+
+#box 
+{
+	display: none;
+	position: fixed;
+	top: 35%;
+	left: 35%;
+	width: 400px;
+	height: 100px;
+	padding: 48px;
+	margin:0;
+	border: 1px solid black;
+	background-color: white;
+	z-index:20;
+	overflow: auto;
+}
+
+#boxtitle
+{
+	position:absolute;
+	float:center;
+	top:0%;
+	left:5%;
+	width: 450px;
+	height:20px;
+	padding:0;
+	padding-top:4px;
+	left-padding:8px;
+	margin:0;
+	border-bottom:4px solid #1F5E9C;
+	background-color: #003F7D;
+	color:white;
+	text-align:center;
+}

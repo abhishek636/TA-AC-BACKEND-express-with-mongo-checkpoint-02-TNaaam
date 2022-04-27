@@ -21,14 +21,14 @@ router.post("/:id", (req, res, next) => {
 
 router.get("/:id/delete", (req, res, next) => {
   var id = req.params.id;
-  Remark.findByIdAndRemove(id, (err, deletedremark) => {
+  Remark.findByIdAndRemove(id, (err, remark) => {
     if (err) return next(err);
     Event.findByIdAndUpdate(
-      deletedremark.eventId,
-      { $pull: { remarks: deletedremark._id } },
+      remark.eventId,
+      { $pull: { remarks: remark._id } },
       (err, event) => {
         if (err) return next(err);
-        res.redirect("/events/" + deletedremark.eventId);
+        res.redirect("/events/" + remark.eventId);
       }
     );
   });
