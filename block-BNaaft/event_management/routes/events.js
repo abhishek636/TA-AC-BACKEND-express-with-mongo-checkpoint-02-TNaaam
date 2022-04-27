@@ -3,6 +3,7 @@ var router = express.Router();
 var Event = require("../models/event");
 var Remark = require("../models/remark");
 
+
 //fetch the event
 router.get("/", (req, res, next) => {
   Event.find({}, (err, events) => {
@@ -26,6 +27,7 @@ router.get("/:id", (req, res, next) => {
     .populate("remarks")
     .exec((err, event) => {
       if (err) return next(err);
+      console.log(event);
       res.render("eventDetails", { event });
     });
 });
@@ -39,9 +41,10 @@ router.get("/:id/edit", (req, res, next) => {
   });
 });
 
-//update event
+//post update event
 router.post("/:id", (req, res, next) => {
   var id = req.params.id;
+  console.log(req.body)
   Event.findByIdAndUpdate(id, req.body, (err, updatedevent) => {
     if (err) return next(err);
     res.redirect("/events/" + id);
@@ -88,5 +91,7 @@ router.post("/:id/remarks", (req, res, next) => {
     );
   });
 });
+
+
 
 module.exports = router;
